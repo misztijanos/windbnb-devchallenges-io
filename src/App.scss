@@ -1,0 +1,8 @@
+.app-container {
+  width: min(1260px, 90%);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  font-family: var(--montserrat);
+}
