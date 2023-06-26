@@ -4,6 +4,7 @@ import img3 from './assets/3.webp'
 import img4 from './assets/4.webp'
 import img5 from './assets/5.webp'
 import img6 from './assets/6.webp'
+
 export const stays = [
   {
     title: 'Stylish apartment in center of the city',
@@ -52,5 +53,28 @@ export const stays = [
     superHost: false,
     img: img6,
     id: 6,
+  },
+]
+
+export const cities = [
+  {
+    id: 1,
+    name: 'Helsinki',
+    country: 'Finland',
+  },
+  {
+    id: 2,
+    name: 'Turku',
+    country: 'Finland',
+  },
+  {
+    id: 3,
+    name: 'Outu',
+    country: 'Finland',
+  },
+  {
+    id: 4,
+    name: 'Vaasa',
+    country: 'Finland',
   },
 ]
