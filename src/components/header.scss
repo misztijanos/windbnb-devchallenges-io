@@ -6,8 +6,15 @@
   gap: 40px;
   align-items: center;
 
+  @media (min-width: 700px) {
+    flex-direction: row;
+  }
+
   &--logo {
     align-self: start;
+    @media (min-width: 700px) {
+      align-self: center;
+    }
   }
   &--searchbox {
     cursor: pointer;

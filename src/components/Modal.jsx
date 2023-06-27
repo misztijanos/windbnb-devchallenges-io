@@ -4,7 +4,32 @@ import { IoMdClose } from 'react-icons/io'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import { FaSearch } from 'react-icons/fa'
 import { cities } from '../data'
-const Modal = ({ show, setShow, city, setCity, handleClose }) => {
+
+const Modal = ({
+  show,
+  setShow,
+  city,
+  setCity,
+  guests,
+  setGuests,
+  handleClose,
+}) => {
+  const addChild = () => {
+    setGuests({ ...guests, children: guests.children + 1 })
+  }
+  const removeChild = () => {
+    if (guests.children > 0) {
+      setGuests({ ...guests, children: guests.children - 1 })
+    }
+  }
+  const addAdult = () => {
+    setGuests({ ...guests, adults: guests.adults + 1 })
+  }
+  const removeAdult = () => {
+    if (guests.adults > 0) {
+      setGuests({ ...guests, adults: guests.adults - 1 })
+    }
+  }
   return (
     <div className="m_overlay" onClick={handleClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -45,14 +70,44 @@ const Modal = ({ show, setShow, city, setCity, handleClose }) => {
           )}
           {show === 'guests' && (
             <div className="modal--content--guests">
-              <div className="modal--content--guest">Adults</div>
-              <div className="modal--content--guest">Children</div>
-              <p>todo: use MUI components for this</p>
+              <div className="modal--content--guest">
+                <p className="modal--content--title">Adults</p>
+                <p className="modal--content--description">Ages 13 or above</p>
+                <div className="modal--content--buttongroup">
+                  <button
+                    className="modal--content--button"
+                    onClick={removeAdult}
+                  >
+                    -
+                  </button>
+                  <p>{guests.adults}</p>
+                  <button className="modal--content--button" onClick={addAdult}>
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <div className="modal--content--guest">
+                <p className="modal--content--title">Children</p>
+                <p className="modal--content--description">Ages 2-12</p>
+                <div className="modal--content--buttongroup">
+                  <button
+                    className="modal--content--button"
+                    onClick={removeChild}
+                  >
+                    -
+                  </button>
+                  <p>{guests.children}</p>
+                  <button className="modal--content--button" onClick={addChild}>
+                    +
+                  </button>
+                </div>
+              </div>
             </div>
           )}
         </div>
         <button
-          className="modal--button"
+          className="modal--search_button"
           onClick={() => {
             setShow('')
             alert(

@@ -6,6 +6,7 @@ import Modal from './Modal'
 const SearchBox = ({ handleSearchClick }) => {
   const [show, setShow] = useState('') //values: 'cities', 'guests'
   const [city, setCity] = useState(cities[0])
+  const [guests, setGuests] = useState({ adults: 0, children: 0 })
 
   const handleClose = () => setShow('')
   return (
@@ -22,25 +23,26 @@ const SearchBox = ({ handleSearchClick }) => {
           className="header--searchbox--guests"
           onClick={() => setShow('guests')}
         >
-          Add guests
+          {guests.adults + guests.children || 'Add'} guests
         </p>
 
         <p className="header--searchbox--search">
           <FaSearch />
         </p>
       </form>
-      {
-        show && (
-          <Modal
-            show={show}
-            setShow={setShow}
-            city={city}
-            setCity={setCity}
-            handleClose={handleClose}
-          />
-        ) /*  handleSubmit={}which select to have open depends on what's in city,
-      will be handled in the modal*/
-      }
+      {show && (
+        <Modal
+          {...{
+            show,
+            setShow,
+            city,
+            setCity,
+            guests,
+            setGuests,
+            handleClose,
+          }}
+        />
+      )}
     </>
   )
 }
